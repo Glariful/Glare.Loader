@@ -15,8 +15,7 @@
     [XmlRoot(Namespace = "", IsNullable = false)]
     public class Config : INotifyPropertyChanged
     {
-        [XmlIgnore]
-        public static Config Instance;
+        [XmlIgnore] public static Config Instance;
         private string _selectedLanguage;
         private bool _tosAccepted;
         private bool _firstRun = true;

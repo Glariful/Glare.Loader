@@ -90,6 +90,7 @@
     <Compile Include="Class\Shared\LoginCredentials.cs" />
     <Compile Include="Class\Utility.cs" />
     <Compile Include="Data\Config.cs" />
+    <Compile Include="Data\Crypto\XOR.cs" />
     <Compile Include="Data\Directories.cs" />
     <Compile Include="Data\Log.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

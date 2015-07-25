@@ -12,6 +12,8 @@
         Width="660"
         MinHeight="240"
         MinWidth="400"
+        Loaded="MainWindow_OnLoaded" 
+        Activated="MainWindow_OnActivated"
         WindowStartupLocation="CenterScreen"
         BorderThickness="0.5"
         GlowBrush="{DynamicResource AccentColorBrush}"

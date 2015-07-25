@@ -25,12 +25,17 @@ namespace Glare.Loader
     using MahApps.Metro.Controls.Dialogs;
     using Microsoft.Build.Evaluation;
 
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : INotifyPropertyChanged
     {
+
+        public bool FirstTimeActivated = true;
+        
         public Config Config
         {
             get { return Config.Instance; }
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -49,7 +54,7 @@ namespace Glare.Loader
             {
                 MainTabControl.SelectedIndex = 1;
             }
-
+            
             #endregion                            
 
             Config.Instance.FirstRun = false;            
@@ -137,6 +142,24 @@ namespace Glare.Loader
             }            
         }
 
+        private void MainWindow_OnActivated(object sender, EventArgs e)
+        {
+            if (FirstTimeActivated)
+            {
+                FirstTimeActivated = false;
+
+                //Try to login with the saved credentials.
+                if (!Auth.Login(Config.Instance.Username, Config.Instance.Password).Item1)
+                {
+                    ShowLoginDialog();
+                }
+                else
+                {
+                    OnLogin(Config.Instance.Username);
+                }
+            }
+        }
+        
         private void NewsButton_OnClick(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 1;            
@@ -153,7 +176,7 @@ namespace Glare.Loader
 
         private void TosAccept_Click(object sender, RoutedEventArgs e)
         {
-            ///Config.Instance.TosAccepted = true;
+            Config.Instance.TosAccepted = true;
             MainTabControl.SelectedIndex = 1;
             RightWindowCommands.Visibility = Visibility.Visible;
             TosBrowser.Visibility = Visibility.Collapsed;
