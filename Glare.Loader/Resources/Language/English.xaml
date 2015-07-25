@@ -15,6 +15,11 @@
     
     <!-- Settings -->
 
-    <!-- Errors -->
+    <!-- Errors and other stuff -->
+    <system:String x:Key="WrongAuth">Wrong password or username, register at {0}</system:String>
+    <system:String x:Key="AuthEmpty">Password or username is empty</system:String>
+    <system:String x:Key="FailedToLogin">Failed to login: {0}</system:String>
+    <system:String x:Key="Login">Login</system:String>
+    <system:String x:Key="LoginError">Failed to sign in as {0}: {1}</system:String>
 
 </ResourceDictionary>
