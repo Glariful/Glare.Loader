@@ -42,7 +42,6 @@ namespace Glare.Loader
             Browser.Visibility = Visibility.Hidden;
             TosBrowser.Visibility = Visibility.Hidden;
             DataContext = this;
-                       
 
             #region ToS
 
